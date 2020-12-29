@@ -17,12 +17,17 @@ tasks.withType(JavaCompile) {
     options.encoding = "UTF-8"
 }
 
+configurations {
+    compile.exclude group:'org.springframework.boot', module: 'spring-boot-starter-tomcat'
+    compile.exclude group:'org.springframework', module: 'spring-webmvc'
+}
+
 dependencies {
     implementation group: 'com.mis98zb.sample', name: 'interface', version: '1.0-SNAPSHOT'
 
-    implementation group: 'org.springframework.boot', name: 'spring-boot-starter', version: '2.4.1'
+    implementation group: 'org.springframework.boot', name: 'spring-boot-starter-undertow'
+
     implementation group: 'org.jboss.resteasy', name: 'resteasy-spring-boot-starter', version: '4.6.4.Final'
-    implementation group: 'org.jboss.resteasy', name: 'resteasy-jackson2-provider', version: '4.5.8.Final'
     implementation group: 'org.jboss.resteasy', name: 'resteasy-multipart-provider', version: '4.5.8.Final'
 
     implementation group: 'io.swagger.core.v3', name: 'swagger-core', version: '2.1.6'
