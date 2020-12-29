@@ -1,19 +1,81 @@
 plugins {
     id 'java'
+    id 'maven'
+    id 'maven-publish'
 }
 
-group 'org.example'
+group 'com.bjrxtd.sample'
 version '1.0-SNAPSHOT'
 
 repositories {
+    maven {url "http://nexus.i.bjrxtd.com/repository/maven-public/"}
     mavenCentral()
 }
 
 dependencies {
+    implementation group: 'io.swagger.core.v3', name: 'swagger-annotations', version: '2.1.6'
+    compile group: 'jakarta.ws.rs', name: 'jakarta.ws.rs-api', version: '2.1.6'
+
+    compileOnly group: 'org.projectlombok', name: 'lombok', version: '1.18.16'
+    annotationProcessor group: 'org.projectlombok', name: 'lombok', version: '1.18.16'
+
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.6.0'
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine'
 }
 
 test {
     useJUnitPlatform()
+}
+
+tasks.withType(JavaCompile) {
+    options.encoding = "UTF-8"
+}
+
+// 开启Jar
+jar.enabled = true
+// 定义打包source
+task sourceJar (type:Jar) {
+    classifier = 'sources'
+    from sourceSets.main.allSource
+}
+
+artifacts {
+    archives sourceJar
+}
+
+// 打包至本地仓库配置
+uploadArchives {
+    repositories {
+        mavenDeployer {
+            // 不带SNAPSHOT后缀的包会上传到这里
+            repository(url: "http://nexus.i.bjrxtd.com/repository/release/") {
+                authentication(userName: "admin", password: "rxtd@123")
+            }
+            // 带SNAPSHOT后缀的包会上传到这里
+            snapshotRepository(url: "http://nexus.i.bjrxtd.com/repository/snapshot/") {
+                authentication(userName: "admin", password: "rxtd@123")
+            }
+            pom.project {
+                name = project.name
+                version = project.version
+                groupId = project.group
+            }
+        }
+    }
+}
+
+
+// 打包至本地仓库配置
+publishToMavenLocal {
+    publishing {
+        publications {
+            maven(MavenPublication) {
+                groupId = project.group
+                artifactId = project.name
+                version = project.version
+
+                from components.java
+            }
+        }
+    }
 }

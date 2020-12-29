@@ -1,0 +1,34 @@
+server:
+  port: 8081
+  undertow:
+    io-threads: ${UNDERTOW_IO_THREADS:2}
+    worker-threads: ${UNDERTOW_WORKER_THREADS:16}
+    buffer-size: ${UNDERTOW_BUFFER_SIZE:1024}
+    direct-buffers: true
+
+spring:
+  application:
+    name: sample-service
+  jackson:
+    default-property-inclusion: non-null
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+    locale: zh
+  servlet:
+    multipart:
+      enabled: true
+      max-file-size: 1000MB
+      max-request-size: 1024MB
+
+feign:
+  httpclient:
+    enabled: true
+  client:
+    config:
+      default:
+        connectTimeout: 10000
+        readTimeout: 600000
+
+#time:
+#  cron:
+#    productsClear: 0 0 23 * * ?
