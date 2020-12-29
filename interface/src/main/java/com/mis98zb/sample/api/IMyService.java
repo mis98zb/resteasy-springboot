@@ -1,6 +1,6 @@
-package com.bjrxtd.sample.api;
+package com.mis98zb.sample.api;
 
-import com.bjrxtd.sample.model.MyModel;
+import com.mis98zb.sample.model.MyModel;
 import io.swagger.v3.oas.annotations.OpenAPIDefinition;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;

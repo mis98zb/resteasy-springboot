@@ -16,8 +16,6 @@
         </encoder>
     </appender>
 
-<!--    <logger name="com.bjrxtd.beequeen.api.mapper" level="${MYBATIS_LOG_LEVEL:-INFO}"/>-->
-
     <root level="${ROOT_LOG_LEVEL:-INFO}">
         <appender-ref ref="${LOGGING_APPENDER_REF:-STDOUT}"/>
         <appender-ref ref="STDOUT"/>
