@@ -7,14 +7,14 @@
 
 # 项目来由
 
-之前在项目中使用spring cloud创建了一套微服务，部署在docker swarm集群上。感觉eureka的功能跟云原生的注册发现格格不入，另外spring mvc性能不高，遂产生了脱离spring cloud使用跟适合云原生机制的技术栈的想法。
+之前在项目中使用spring cloud创建了一套微服务，部署在docker swarm集群上。感觉eureka的功能跟云原生的注册发现格格不入，另外spring mvc性能不高，遂产生了脱离spring cloud使用更适合云原生机制的技术栈的想法。
 
 然后某天晚上趁着失眠，撸下这个项目的初始代码。
 
 # 各项目介绍
 
 ## interface
-这是服务的接口部分，定义了服务的interface和vo。
+这是服务的接口部分，定义了服务的interface和vo，供`service`和`client`使用。
 
 并且使用JAX-RS的注解定义了访问相关的信息（URL、参数、返回类型），使用swagger的注释添加了相关说明。
 
