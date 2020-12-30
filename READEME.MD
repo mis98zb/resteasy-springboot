@@ -1,0 +1,1 @@
+sample for resteasy on springboot, and openfeign client on okhttp.
