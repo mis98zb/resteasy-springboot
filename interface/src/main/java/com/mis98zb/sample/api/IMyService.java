@@ -1,18 +1,18 @@
 package com.mis98zb.sample.api;
 
 import com.mis98zb.sample.model.MyModel;
-import io.swagger.v3.oas.annotations.OpenAPIDefinition;
+
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
-import io.swagger.v3.oas.annotations.info.Info;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
+import io.swagger.v3.oas.annotations.tags.Tag;
 
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
-import javax.ws.rs.QueryParam;
+import jakarta.ws.rs.GET;
+import jakarta.ws.rs.Path;
+import jakarta.ws.rs.Produces;
+import jakarta.ws.rs.QueryParam;
 
-@OpenAPIDefinition(info=@Info(description="一个测试服务"))
+@Tag(name="MyService", description="我的服务")
 @Path("/myservice")
 public interface IMyService {
 
