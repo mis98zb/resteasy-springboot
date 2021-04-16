@@ -17,7 +17,7 @@ repositories {
 
 dependencies {
     implementation group: 'io.swagger.core.v3', name: 'swagger-annotations', version: '2.1.7'
-    compile group: 'jakarta.ws.rs', name: 'jakarta.ws.rs-api', version: '3.0.0'
+    compile group: 'org.jboss.spec.javax.ws.rs', name: 'jboss-jaxrs-api_2.1_spec', version: '2.0.1.Final'
 
     compileOnly group: 'org.projectlombok', name: 'lombok', version: '1.18.20'
     annotationProcessor group: 'org.projectlombok', name: 'lombok', version: '1.18.20'

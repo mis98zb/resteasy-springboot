@@ -35,8 +35,6 @@ dependencies {
 
     implementation group: 'io.swagger.core.v3', name: 'swagger-core', version: '2.1.7'
     implementation group: 'io.swagger.core.v3', name: 'swagger-jaxrs2', version: '2.1.7'
-
-    compile group: 'jakarta.ws.rs', name: 'jakarta.ws.rs-api', version: '3.0.0'
     
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.6.0'
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine'
