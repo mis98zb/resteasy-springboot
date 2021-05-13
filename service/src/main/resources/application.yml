@@ -1,8 +1,9 @@
 server:
   port: 8081
   undertow:
-    io-threads: ${UNDERTOW_IO_THREADS:2}
-    worker-threads: ${UNDERTOW_WORKER_THREADS:16}
+    threads: 
+      io: ${UNDERTOW_IO_THREADS:2}
+      worker: ${UNDERTOW_WORKER_THREADS:16}
     buffer-size: ${UNDERTOW_BUFFER_SIZE:1024}
     direct-buffers: true
 
