@@ -19,11 +19,11 @@ dependencies {
 
     implementation group: 'org.springframework.boot', name: 'spring-boot-starter', version: '2.4.4'
 
-    implementation group: 'io.github.openfeign', name: 'feign-core', version: '11.1'
-    implementation group: 'io.github.openfeign', name: 'feign-jackson', version: '11.1'
-    implementation group: 'io.github.openfeign', name: 'feign-slf4j', version: '11.1'
-    implementation group: 'io.github.openfeign', name: 'feign-okhttp', version: '11.1'
-    implementation group: 'io.github.openfeign', name: 'feign-jaxrs', version: '11.1'
+    implementation group: 'io.github.openfeign', name: 'feign-core', version: '11.2'
+    implementation group: 'io.github.openfeign', name: 'feign-jackson', version: '11.2'
+    implementation group: 'io.github.openfeign', name: 'feign-slf4j', version: '11.2'
+    implementation group: 'io.github.openfeign', name: 'feign-okhttp', version: '11.2'
+    implementation group: 'io.github.openfeign', name: 'feign-jaxrs2', version: '11.2'
 
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.6.0'
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine'
