@@ -18,24 +18,24 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 @Tag(name="MyService", description="我的服务")
 @Path("myservice")
 public interface IMyService {
-    @Operation(description = "做一下测试嘛",  
-    		summary="这种方式指定了能返回的类型。对swagger友好。", 
+    @Operation(summary = "做一下测试嘛",  
+    		description="这种方式指定了能返回的类型。对swagger友好。", 
     		security = @SecurityRequirement(name="wawa", scopes = "haha"))
     @GET
     @Path("test")
     @Produces(MediaType.APPLICATION_JSON)
     MyModel test(@Parameter(description = "君の名は") @QueryParam("name") String name);
     
-    @Operation(description = "测试一下Response嘛",  
-    		summary=" 这种方式能返回任意类型的内容。但是这个对swagger不友好。", 
+    @Operation(summary = "测试一下Response嘛",  
+    		description=" 这种方式能返回任意类型的内容。但是这个对swagger不友好。", 
     		security = @SecurityRequirement(name="wawa", scopes = "haha"))
     @GET
     @Path("testResponse")
     @Produces(MediaType.APPLICATION_JSON)
     public Response testResponse(@Parameter(description = "君の名は") @QueryParam("name") String name);
     
-    @Operation(description = "测试一下流嘛",  
-    		summary="这种方式能以流的形式返回。对返回大数据量很有用。", 
+    @Operation(summary = "测试一下流嘛",  
+    		description="这种方式能以流的形式返回。对返回大数据量很有用。", 
     		security = @SecurityRequirement(name="wawa", scopes = "haha"))
     @GET
     @Path("/testStream")
