@@ -4,6 +4,7 @@ import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
+import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 import com.mis98zb.sample.model.MyModel;
@@ -22,22 +23,22 @@ public interface IMyService {
     		security = @SecurityRequirement(name="wawa", scopes = "haha"))
     @GET
     @Path("test")
-    @Produces("application/json")
-    MyModel test(@Parameter(name = "君の名は") @QueryParam("name") String name);
+    @Produces(MediaType.APPLICATION_JSON)
+    MyModel test(@Parameter(description = "君の名は") @QueryParam("name") String name);
     
     @Operation(description = "测试一下Response嘛",  
     		summary=" 这种方式能返回任意类型的内容。但是这个对swagger不友好。", 
     		security = @SecurityRequirement(name="wawa", scopes = "haha"))
     @GET
     @Path("testResponse")
-    @Produces("application/json")
-    public Response testResponse(@Parameter(name = "君の名は") @QueryParam("name") String name);
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response testResponse(@Parameter(description = "君の名は") @QueryParam("name") String name);
     
     @Operation(description = "测试一下流嘛",  
     		summary="这种方式能以流的形式返回。对返回大数据量很有用。", 
     		security = @SecurityRequirement(name="wawa", scopes = "haha"))
     @GET
     @Path("/testStream")
-    @Produces({"application/octet-stream", "application/json"})
-    public Response testStream(@Parameter(name = "ファイルの名は") @QueryParam("fname") String fname);
+    @Produces({MediaType.APPLICATION_OCTET_STREAM, MediaType.APPLICATION_JSON})
+    public Response testStream(@Parameter(description = "ファイルの名は") @QueryParam("fname") String fname);
 }

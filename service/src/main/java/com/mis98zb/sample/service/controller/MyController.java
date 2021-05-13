@@ -3,7 +3,10 @@ package com.mis98zb.sample.service.controller;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.InputStream;
+import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
 
+import javax.ws.rs.core.HttpHeaders;
 import javax.ws.rs.core.Response;
 
 import org.springframework.stereotype.Controller;
@@ -38,10 +41,10 @@ public class MyController implements IMyService {
 		File f = new File("d:\\" + fileName);
 		try {
 			InputStream fis = new FileInputStream(f);
-
+			String encodFileName = URLEncoder.encode(fileName, StandardCharsets.UTF_8);
 			return Response.ok()
-					.header("Content-Disposition", "attachment;filename=" + fileName)
-					.header("Content-Length", f.length())
+					.header(HttpHeaders.CONTENT_DISPOSITION, "attachment;filename=" + encodFileName)
+					.header(HttpHeaders.CONTENT_LENGTH, f.length())
 					.entity(fis)
 					.build();
 		} catch (Exception e) {
