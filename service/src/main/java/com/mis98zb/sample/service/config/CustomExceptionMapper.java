@@ -1,27 +1,25 @@
 package com.mis98zb.sample.service.config;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
-
-import javax.ws.rs.NotFoundException;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import javax.ws.rs.ext.ExceptionMapper;
 import javax.ws.rs.ext.Provider;
+
+import org.springframework.stereotype.Component;
+
+import lombok.extern.slf4j.Slf4j;
 
 @Component
 @Provider
-public class CustomExceptionMapper {
-//    @Autowired
-//    private CustomSingletonBean customSingletonBean;
+@Slf4j
+public class CustomExceptionMapper implements ExceptionMapper<Exception>{
 
-    public Response toResponse(NotFoundException exception) {
-
-//        // This will cause a NPE if this bean couldn't be injected,
-//        // and that is all we want to check. No need for assertions here
-//        customSingletonBean.amIAlive();
-
-        Response.ResponseBuilder responseBuilder = Response.status(Response.Status.NOT_FOUND).entity("The resource you've requested, has not been found!");
-        responseBuilder.type(MediaType.TEXT_PLAIN);
-        return responseBuilder.build();
-    }
+	@Override
+	public Response toResponse(Exception exception) {
+		log.info("internal error occured.", exception);
+        return Response.status(Response.Status.INTERNAL_SERVER_ERROR).
+        		entity("internal server error.")
+        		.type(MediaType.TEXT_PLAIN)
+        		.build();
+	}
 }
